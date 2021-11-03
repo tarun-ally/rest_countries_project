@@ -6,13 +6,13 @@ import{BrowserRouter,Link, Route, Switch} from 'react-router-dom';
 
 class HeroSec extends React.Component {
 
-  countryDetail = (key) => {
-    // if(this.state.index){
-      console.log(key);
-      // this.setState({ index: false })
-    // }
-this.props.countryDetails(key)
-  }
+//   countryDetail = (key) => {
+//     // if(this.state.index){
+//       console.log(key);
+//       // this.setState({ index: false })
+//     // }
+// this.props.countryDetails(key)
+//   }
   render() {
     // console.log(this.props.content, "tr");
     // {console.log(this.props.content.allCountryDisplay,'re')}
@@ -82,7 +82,7 @@ this.props.countryDetails(key)
                 width: "70%",
                 cursor: 'pointer',
               }}
-              onClick={() => this.countryDetail(index)}
+              // onClick={() => this.countryDetail(index)}
               // onClick={this.props.countryDetails} country={index}
               
               width="10%">
@@ -97,7 +97,7 @@ this.props.countryDetails(key)
                   <div>Region: {item.region}</div>
                   <div>Capital: {item.capital}</div>
                   <div>Capital: {item.alpha3Code}</div>
-              <Link to={`/${item.alpha3Code}`}  >
+              <Link to={`/${item.alpha3Code}`} key={item.alpha3Code} >
                   <button> pree</button>
             </Link>
            

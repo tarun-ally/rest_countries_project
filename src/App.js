@@ -41,22 +41,22 @@ console.log(event.target.innerText,'start');
   })
 }
 
-countryDetails=(val)=>{
-  // console.log(event.target.getAttribute('countryIndex'),'kell')
+// countryDetails=(val)=>{
+//   // console.log(event.target.getAttribute('countryIndex'),'kell')
 
 
-  console.log('48',val)
+//   console.log('48',val)
 
-// console.log(event.target.parentNode.getAttribute('countryIndex'),'rasa')
-this.setState({
+// // console.log(event.target.parentNode.getAttribute('countryIndex'),'rasa')
+// this.setState({
 
 
-  indexForCountry:val
+//   indexForCountry:val
 
   
-})
+// })
 
-}
+// }
 componentDidMount(){
     fetch(`https://restcountries.com/v2/all/`)
     .then((res)=> res.json())
@@ -111,8 +111,10 @@ return(
 
                
 <Switch>
-<Route path="/" exact component={App} />
-<Route path="/:id"  component={OneCountry}/>
+{/* <Route path="/" exact component={App} /> */}
+
+
+<Route path="/:id" exact  component={OneCountry}/>
 
 </Switch>
      

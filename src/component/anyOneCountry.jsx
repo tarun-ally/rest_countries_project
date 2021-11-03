@@ -1,329 +1,134 @@
+import React, { Component } from "react";
+import { withRouter , Link } from "react-router-dom";
 
-// import React, { useEffect,useState } from "react";
+class OneCountry extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      country: [],
+      loaded:false
+    };
+  }
 
+  componentDidMount() {
+    let id = this.props.match.params.id;
+    console.log(id);
+    fetch(`https://restcountries.com/v2/alpha/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(json, "kiara");
 
-// function OneCountry(){
-//   const[item,setItem] = useState({});
+        this.setState({
+      
+          country:data,
+          loaded:true
+        });
+      });
+  }
 
-//   const fetchItem =async () =>{
+  render() {
+    const{loaded}=this.state;
+    if(!loaded){
+      return <p>please stop</p>
+    }
+    // console.log(this.state.country);
+    console.log("countryy", this.state.country.borders, "champa");
+    if(this.state.country.borders == undefined ){
 
-//     const data = await fetch('`https://restcountries.com/v2/alpha/${}');
-  
-//     console.log(data,'kiara');
-//   const item =  await data.json();
-  
-// }
-// }
+    return (
+      <div>
+        <h1>{this.state.country.name}</h1>
+        <div>
+        <img
+              src={`${this.state.country.flag}`}
+              alt=""
+              width="30%"
+            />
 
+        </div>
+<h1>hello</h1>
+      <div>
 
-// class OneCountry extends React.Component {
+        hiii
+          <div> {this.state.country.name}</div>
+          <div>
+            <p>{this.state.country.nativeName}</p>
+            <p>{this.state.country.population}</p>
+            <p>{this.state.country.region}</p>
+            <p>{this.state.country.subregion}</p>
+            <p>{this.state.country.capital}</p>
+            <p>{this.state.country.topLevelDomain}</p>
+            <p>{this.state.country.currencies[0].name}</p>
 
+            <div >{ console.log(this.state.country.languages[0].name,'hush')}
+            {this.state.country.languages.map((element,index)=>{
+              console.log(element.name,index,'hush')
+              return <div>
+                <span>{element.name}</span>
+              </div>
+            }
+            )}</div>
+          </div>
+      </div>
+      </div>
+    );
+  }else {
 
+    return (
+      <div>
+        <h1>{this.state.country.name}</h1>
+        <div>
+        <img
+              src={`${this.state.country.flag}`}
+              alt=""
+              width="30%"
+            />
 
-//   // const fetchItem = async()=>{
-    
+        </div>
+<h1>hello</h1>
+      <div>
 
+        hiii
+          <div> {this.state.country.name}</div>
+          <div>
+            <p>{this.state.country.nativeName}</p>
+            <p>{this.state.country.population}</p>
+            <p>{this.state.country.region}</p>
+            <p>{this.state.country.subregion}</p>
+            <p>{this.state.country.capital}</p>
+            <p>{this.state.country.topLevelDomain}</p>
+            <p>{this.state.country.currencies[0].name}</p>
 
-//   // }
-//   render() {
-//     console.log( this.props.singleContent.items[this.props.singleContent.indexForCountry]
-//       .borders,'hulk')
-//     if (
-//       this.props.singleContent.items[this.props.singleContent.indexForCountry]
-//         .borders !== "undefined" 
-//         // &&
-//       // this.props.singleContent.items[this.props.singleContent.indexForCountry]
-//       //   .borders !== ""
-//     ) 
-//     {
-//       return (
-//         <div>
-//           <div>
-//             <button>Back</button>
-//           </div>
-//           <div>
-//             <img
-//               src={`${this.props.singleContent.items[0].flags.svg}`}
-//               alt=""
-//               width="30%"
-//             />
-//           </div>
-//           hello
-//           {console.log(this.props.singleContent.items[0].population)}
-//           <div
-//             style={{
-//               display: "grid",
-//               gridTemplateColumns: "1fr 1fr",
-//               backgroundColor: "white",
-//             }}
-//           >
-//             <div>
-//               {
-//                 this.props.singleContent.items[
-//                   this.props.singleContent.indexForCountry
-//                 ].name
-//               }
-//             </div>
-//             {console.log(this.props.singleContent.indexForCountry, "luck")}
-//             <p>
-//               Native Name:{" "}
-//               {
-//                 this.props.singleContent.items[
-//                   this.props.singleContent.indexForCountry
-//                 ].nativeName
-//               }
-//             </p>
-//             <p>
-//               {" "}
-//               Population:{" "}
-//               {
-//                 this.props.singleContent.items[
-//                   this.props.singleContent.indexForCountry
-//                 ].population
-//               }
-//             </p>
-//             <p>
-//               Region:{" "}
-//               {
-//                 this.props.singleContent.items[
-//                   this.props.singleContent.indexForCountry
-//                 ].region
-//               }
-//             </p>
-//             <p>
-//               Sub Region:{" "}
-//               {
-//                 this.props.singleContent.items[
-//                   this.props.singleContent.indexForCountry
-//                 ].subregion
-//               }
-//             </p>
-//             <p>
-//               Capital:{" "}
-//               {
-//                 this.props.singleContent.items[
-//                   this.props.singleContent.indexForCountry
-//                 ].capital
-//               }
-//             </p>
-//             <p>
-//               Top Level Domain:{" "}
-//               {
-//                 this.props.singleContent.items[
-//                   this.props.singleContent.indexForCountry
-//                 ].topLevelDomain
-//               }
-//             </p>
-//             <p>
-//               Currencies:{" "}
-//               {
-//                 this.props.singleContent.items[
-//                   this.props.singleContent.indexForCountry
-//                 ].currencies[0].name
-//               }{" "}
-//             </p>
-//             <p>
-//               Languages:{" "}
-//               {
-//                 this.props.singleContent.items[
-//                   this.props.singleContent.indexForCountry
-//                 ].languages[0].name
-//               }
-//             </p>
+            <div >{ console.log(this.state.country.languages[0].name,'hush')}
+            {this.state.country.languages.map((element,index)=>{
+              console.log(element.name,index,'hush')
+              return <div>
+                <span>{element.name}</span>
+              </div>
+            }
+            )}</div>
 
-//             <div
-//               style={{
-//                 display: "flex",
-//                 justifyContent: "space-between",
-//                 width: "50%",
-//                 backgroundColor: "red"
-//                 //    flexDirection:'column'
-//               }}
-//             >
-//               {this.props.singleContent.items[
-//                 this.props.singleContent.indexForCountry
-//               ].borders.map((borderCountry) => {
-//                 if (borderCountry) {
-//                   // console.log(borderCountry, "namee");
-//                   return (
-//                     <div
-//                       style={{
-//                         display: "flex",
-//                         width: "10%",
-//                         backgroundColor: "green",
-//                         justifyContent: "space-between",
-//                         //    flexDirection:'column'
-//                       }}
-//                     >
-//                       <p> {borderCountry}</p>
-//                     </div>
-//                   );
-//                 }
-//               })}
-//             </div>
-//           </div>
-//         </div>
-//       );
-//     } else {
-//       return (
-//         <div>
-//           <div>
-//             <button>Back</button>
-//           </div>
-//           <div>
-//             <img
-//               src={`${this.props.singleContent.items[0].flags.svg}`}
-//               alt=""
-//               width="30%"
-//             />
-//           </div>
-//           hello
-//           {console.log(this.props.singleContent.items[0].population)}
-//           <div
-//             style={{
-//               display: "grid",
-//               gridTemplateColumns: "1fr 1fr",
-//               backgroundColor: "white",
-//             }}
-//           >
-//             <div>
-//               {
-//                 this.props.singleContent.items[
-//                   this.props.singleContent.indexForCountry
-//                 ].name
-//               }
-//             </div>
-//             {console.log(this.props.singleContent.indexForCountry, "luck")}
-//             <p>
-//               Native Name:{" "}
-//               {
-//                 this.props.singleContent.items[
-//                   this.props.singleContent.indexForCountry
-//                 ].nativeName
-//               }
-//             </p>
-//             <p>
-//               {" "}
-//               Population:{" "}
-//               {
-//                 this.props.singleContent.items[
-//                   this.props.singleContent.indexForCountry
-//                 ].population
-//               }
-//             </p>
-//             <p>
-//               Region:{" "}
-//               {
-//                 this.props.singleContent.items[
-//                   this.props.singleContent.indexForCountry
-//                 ].region
-//               }
-//             </p>
-//             <p>
-//               Sub Region:{" "}
-//               {
-//                 this.props.singleContent.items[
-//                   this.props.singleContent.indexForCountry
-//                 ].subregion
-//               }
-//             </p>
-//             <p>
-//               Capital:{" "}
-//               {
-//                 this.props.singleContent.items[
-//                   this.props.singleContent.indexForCountry
-//                 ].capital
-//               }
-//             </p>
-//             <p>
-//               Top Level Domain:{" "}
-//               {
-//                 this.props.singleContent.items[
-//                   this.props.singleContent.indexForCountry
-//                 ].topLevelDomain
-//               }
-//             </p>
-//             <p>
-//               Currencies:{" "}
-//               {
-//                 this.props.singleContent.items[
-//                   this.props.singleContent.indexForCountry
-//                 ].currencies[0].name
-//               }{" "}
-//             </p>
-//             <p>
-//               Languages:{" "}
-//               {
-//                 this.props.singleContent.items[
-//                   this.props.singleContent.indexForCountry
-//                 ].languages[0].name
-//               }
-//             </p>
+<div >{ console.log(this.state.country.borders.length,'mush')}
+            {this.state.country.borders.map((element,index)=>{
+              console.log(element,index,'kush')
+              return <div>
+                  <Link to={`/${element}` }  > 
+                  
+                <span>{element}</span>
+                  </Link>
+              </div>
+              
+            }
+            )}</div>
+          </div>
+      </div>
+      </div>
+    );
+  }
 
-//             <div
-//               style={{
-//                 display: "flex",
-//                 justifyContent: "space-between",
-//                 width: "50%",
-//                 backgroundColor: "red",
-//                 //    flexDirection:'column'
-//               }}
-//             >
-//               {/* {this.props.singleContent.items[
-//                 this.props.singleContent.indexForCountry
-//               ].borders.map((borderCountry) => {
-//                 if (borderCountry) {
-//                   console.log(borderCountry, "namee");
-//                   return (
-//                     <div
-//                       style={{
-//                         display: "flex",
-//                         width: "10%",
-//                         backgroundColor: "green",
-//                         justifyContent: "space-between",
-//                         //    flexDirection:'column'
-//                       }}
-//                     >
-//                       <p> {borderCountry}</p>
-//                     </div>
-//                   );
-//                 }
-//               })} */}
-//             </div>
-//           </div>
-//         </div>
-//       );
-//     }
-//   }
-// }
+  }
+}
 
 // export default OneCountry;
 
-import React, { Component } from 'react'
-
-import{withRouter} from 'react-router-dom';
-
-class OneCountry extends React.Component {
-
-
-   fetchItem =async () =>{
-
-    fetch(`https://restcountries.com/v2/all/`)
-    .then((res)=> res.json())
-    .then((json)=>{
-      
-      console.log(json,'kiara');
-    })
-
-  
-  const item =  await data.json();
-  
-}
-  render() { 
-    return <div>
-      {this.props.match.params.id}
-    </div>;
-  }
-}
- 
-export default withRouter(OneCountry) ;
+export default withRouter(OneCountry);
