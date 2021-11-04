@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { withRouter , Link,useHistory } from "react-router-dom";
+import { withRouter , Link } from "react-router-dom";
 
-class OneCountry extends Component {
+class BorderCountry extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -10,27 +10,20 @@ class OneCountry extends Component {
       alpha3Code:''
     };
   }
-
-
 updatingAlphaCode(element){
 console.log(element,'mouse')
 this.setState({
   alpha3Code:element,
 })
 
-
-
 }
-
   componentDidMount() {
     let id = this.props.match.params.id;
     console.log(id);
     fetch(`https://restcountries.com/v2/alpha/${id}`)
       .then((res) => res.json())
       .then((data) => {
-
         this.setState({
-      
           country:data,
           loaded:true
         });
@@ -46,19 +39,17 @@ this.setState({
     if(this.state.country.borders == undefined ){
 
     return (
-      
       <div>
 
-        <div>
+<div>
         {/* <Link to='/'> */}
-      <button onClick={this.props.history.goBack}>
+        <button onClick={this.props.history.goBack}>
         Back
       </button>
       {/* </Link> */}
 
         </div>
 
-        
         <h1>{this.state.country.name}</h1>
         <div>
         <img
@@ -69,9 +60,10 @@ this.setState({
 
         </div>
       <div>
+
           <div> {this.state.country.name}</div>
           <div>
-            <p>Native Name: {this.state.country.nativeName}</p>
+          <p>Native Name: {this.state.country.nativeName}</p>
             <p>Population: {this.state.country.population}</p>
             <p>Region: {this.state.country.region}</p>
             <p>Sub Region: {this.state.country.subregion}</p>
@@ -96,6 +88,7 @@ this.setState({
     return (
       <div>
 
+
 <div>
         {/* <Link to='/'> */}
         <button onClick={this.props.history.goBack}>
@@ -104,7 +97,6 @@ this.setState({
       {/* </Link> */}
 
         </div>
-
         <h1>{this.state.country.name}</h1>
         <div>
         <img
@@ -115,6 +107,8 @@ this.setState({
 
         </div>
       <div>
+
+        
           <div> {this.state.country.name}</div>
           <div>
           <p>Native Name: {this.state.country.nativeName}</p>
@@ -132,13 +126,13 @@ this.setState({
                 <span>{element.name}</span>
               </div>
             }
-            )}</div>Border Country: 
+            )}</div>
 
 <div >{ console.log(this.state.country.borders.length,'mush')}
             {this.state.country.borders.map((element,index)=>{
               console.log(element,index,'kush')
               return <div   >
-                  <Link to={`/${element}`}    > 
+                  <Link to={`/country/${element}`}    > 
                   
                 <span onClick = {() => this.forceUpdate}>{element}</span>
                   </Link>
@@ -154,4 +148,4 @@ this.setState({
 
   }
 }
-export default (OneCountry);
+export default (BorderCountry);
