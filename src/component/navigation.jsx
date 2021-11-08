@@ -1,17 +1,29 @@
-import React, { Component } from 'react'
+import React from 'react'
+import{IoMoonOutline} from 'react-icons/io5'
 class NavBar extends React.Component {
     render() { 
         return (
-            <div className="mainHeader" style ={{    display:'flex',
-            justifyContent:'space-around', backgroundColor:'blue',width:'100%',margin:'40px 0 50px 0'}} >
 
-        <nav>
-        
-         <h3>
+
+            
+            <div className="mainHeader"  style ={{    margin:'0 0 50px 0'}} >
+
+<nav class="navbar navbar-light bg-white shadow-sm width='100%" >
+  <div class="container-fluid" >
+    {/* <a class="navbar-brand">Navbar</a> */}
+    {/* <form class="d-flex"> */}
+    <h3 class="navbar-brand">
            Where in the world?
            </h3>
-            </nav>
-            <button className="darkmode">dark mode</button>
+      {/* <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> */}
+      <button class="btn btn-outline" type="submit"><IoMoonOutline/>Dark Mode</button>
+    {/* </form> */}
+  </div>
+</nav>
+
+
+       
+            {/* <button className="darkmode">dark mode</button> */}
             </div>
             
             );

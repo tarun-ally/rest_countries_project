@@ -1,6 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 // import HeroSec from './heroSection';
 // import {useState} from 'react'
+
+import {GoSearch} from 'react-icons/go';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Dropdown} from 'react-bootstrap';
+
 
 class Search extends React.Component {
   render() {
@@ -9,50 +14,39 @@ class Search extends React.Component {
       
       style={{
         width: "100%",
-        // height: "200px",
-        display: "grid",
-        backgroundColor: "orange",
+        display: "flex",
+        // backgroundColor: "orange",
         width: "100%",
-        gridTemplateColumns: "1fr 1fr 1fr",
-        // backgroundColor: "yellow",
+        justifyContent:'space-between',
     }}>
-        <input
-          className="searchInput"
-          type="text"
-          value={this.props.inputValue}
+      
+
+        <div class="input-group rounded" style={{width:'25%'}} >
+  <input type="text" class="form-control rounded"  value={this.props.inputValue}
           placeholder="Search for a country..."
-          onChange={this.props.countryFilterOnChange}
-        ></input>
+          onChange={this.props.countryFilterOnChange} aria-label="Search"
+  aria-describedby="search-addon" />
 
-        <div>Filter by Region</div>
+</div>
 
-        {/* {console.log((this.props.filteringContent.region),'2222')} */}
-        <div
-          className="regionCountry"
-          style={{
-            width: "40%",
-            // height: "200px",
-            backgroundColor: "yellow",
-        }}
+<div>
 
+<Dropdown>
+  <Dropdown.Toggle variant="white" id="dropdown-basic">
+    Filter by Region   
+  </Dropdown.Toggle>
 
-        onClick={this.props.countryByRegion}
-        >
-          {/* {console.log(this.props.filteringContent.region)} */}
-          {this.props.filteringContent.region.map((element, key) => {
-             
-             return<div className="country" key={key} width="10%">
-             {/* console.log(key,'nut') */}
-             <div>{element}</div>
-             {/* <div>
-               <div>Population: {element.population}</div>
-               <div>Region: {element.region}</div>
-               <div>Capital: {element.capital}</div>
-             </div> */}
-           </div>
-            }
-          )}
-        </div>
+  <Dropdown.Menu   onClick={this.props.countryByRegion}>
+  {this.props.filteredRegion.map((element, key) => {
+    console.log(element,'nappa');
+    return <Dropdown.Item >{element}</Dropdown.Item>
+    // <option>{element}</option>
+  })}
+   <Dropdown.Item >none</Dropdown.Item>
+  </Dropdown.Menu>
+</Dropdown>
+
+  </div>
       </div>
     );
   }

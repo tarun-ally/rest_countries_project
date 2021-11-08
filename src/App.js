@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
-import './App.css';
-import NavBar from './component/navigation';
-import OneCountry from './component/anyOneCountry';
+import React from 'react';
 import{BrowserRouter, Route, Switch} from 'react-router-dom';
-import BorderCountry from './component/borderCountry';
-import SectionApp from './section';
+
+import './App.css';
+
+import NavBar from './component/navigation';
+import CountryDetails from './component/countryDetails';
+import Home from './home';
 
 class App  extends React.Component {
 
@@ -15,9 +16,8 @@ return(
       <NavBar/>
      </div>
 <Switch>
-<Route path="/country/:id"  exact component={OneCountry}/>
-<Route path="/:id" exact  component={BorderCountry}/>
-<Route path="/" exact  component={SectionApp}/>
+<Route path="/:id"  exact component={CountryDetails}/>
+<Route path="/" exact  component={Home}/>
 </Switch>
     </BrowserRouter>
      )
