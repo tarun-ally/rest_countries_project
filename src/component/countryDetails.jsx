@@ -3,6 +3,7 @@ import {FiArrowLeft} from 'react-icons/fi';
 
 import {CountryDetailsContent} from './countryDataStructure';
 
+
 class CountryDetails extends Component {
   constructor(props) {
     super(props);
@@ -54,15 +55,18 @@ class CountryDetails extends Component {
     return (
       <div>
           
-          <div >
-          <button onClick={this.props.history.goBack}> <FiArrowLeft/> Back</button>
-        </div>
+          <div className='backButton'>
+
+          <button class="btn btn-white" class="shadow px-3 x-5 bg-white rounded" onClick={this.props.history.goBack}> <FiArrowLeft/> Back</button>
+        </div >
 
         <CountryDetailsContent 
         nativeName={this.state.country.nativeName}
         name = {this.state.country.name}
-        flag={this.state.country.flag}
+        flag={this.state.country.flags.png}
+        region= {this.state.country.region}
         subregion= {this.state.country.subregion}
+        population= {this.state.country.population}
         capital= {this.state.country.capital}
         topLevelDomain={this.state.country.topLevelDomain}
         currencies= {this.state.country.currencies[0].name}

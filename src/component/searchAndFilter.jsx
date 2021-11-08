@@ -21,7 +21,7 @@ class Search extends React.Component {
     }}>
       
 
-        <div class="input-group rounded" style={{width:'25%'}} >
+        <div class="input-group rounded" style={{width:'25%', marginLeft:'70px'}} >
   <input type="text" class="form-control rounded"  value={this.props.inputValue}
           placeholder="Search for a country..."
           onChange={this.props.countryFilterOnChange} aria-label="Search"
@@ -31,7 +31,7 @@ class Search extends React.Component {
 
 <div>
 
-<Dropdown>
+<Dropdown style={{ marginRight:'105px'}}>
   <Dropdown.Toggle variant="white" id="dropdown-basic">
     Filter by Region   
   </Dropdown.Toggle>

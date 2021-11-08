@@ -1,0 +1,89 @@
+*{
+    font-family: 'Nunito Sans', sans-serif;
+  
+    box-sizing: border-box;
+}
+body{
+    background-color: hsl(0, 0%, 98%);
+}
+
+.navbarH3{
+    margin-left: 55px;
+}
+.darkMode{
+    margin-right: 90px;
+}
+.wrapperContent{
+    /* background-color: red; */
+    margin-top: 10%;
+}
+.allCountry{
+    display: grid;
+    background-color: hsl(0, 0%, 98%);
+    width: 90%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    /* margin-top: 50px; */
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.singleCountryName{
+    margin-top: 30px;
+}
+
+.card{
+    width: 16rem; 
+    text-decoration: none;
+    margin-top: 70px;
+    height: 60vh;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 0 100px rgba(196, 196, 196, 0.453);
+}
+
+
+a{
+    color: black;
+    text-decoration: none;
+}
+a:hover{
+    color: black;
+    text-decoration: none;
+}
+.backButton{
+    margin-left: 70px;
+}
+
+.countrySection{
+    display: grid;
+    /* background-color: red; */
+    width: 90%;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 50px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+ 
+}
+.singleCountryContent{
+    display: grid;
+    width: 100%;
+    margin-top: 20px;
+    grid-template-columns: 1fr 1fr; 
+}
+
+.countryDetailLanguage{
+    display: flex;
+}
+
+.borderCountry{
+    display: flex;
+    width: 100%;
+    margin-top: 50px;
+ 
+}
+
+.borderButton{
+    margin-left: 15px;
+}
