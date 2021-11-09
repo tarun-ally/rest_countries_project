@@ -54,7 +54,12 @@ a:hover{
 .backButton{
     margin-left: 70px;
 }
-
+.searchNotFound{
+    margin: 10%;
+    width: 10%;
+    background-color:  white;
+    /* box-shadow: 0 0 100px rgba(196, 196, 196, 0.453); */
+}
 .countrySection{
     display: grid;
     /* background-color: red; */

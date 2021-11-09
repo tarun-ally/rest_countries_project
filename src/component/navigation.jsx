@@ -16,10 +16,10 @@ class NavBar extends React.Component {
            </h3>
     </div >
       {/* <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> */}
-      <div className='darkMode'>
+      {/* <div className='darkMode'>
 
       <p class="btn btn-outline" type="text"><IoMoonOutline/>Dark Mode</p>
-      </div>
+      </div> */}
     {/* </form> */}
   </div>
 </nav>

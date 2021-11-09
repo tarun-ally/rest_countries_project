@@ -5,14 +5,22 @@ import { StructureData } from "./countryDataStructure";
 import './country.css';
 class CountryList extends React.Component {
   render() {
+    if(this.props.countries[0]==='search not found'){
+      return <div className="searchNotFound">Search not found</div>;
+    }
     return (
       <div className="mainDiv" >
         {/* {console.log(this.props.countries, "nivce")} */}
 
         <div
           className="allCountry"
+
+         
         >
-          {this.props.countries.map((item, index) => (
+
+          {console.log(this.props.countries[0])}
+          { this.props.countries.map((item, index) => (
+            
             <div
                 className="country"
                 key={index}

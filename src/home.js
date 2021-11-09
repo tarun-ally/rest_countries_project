@@ -51,10 +51,14 @@ class Home  extends React.Component {
   }
 
   handleFilterByRegion=(value)=>{
-    let flag=0;
+    if(value.length ===0){
+      return ['search not found'];
+    }
+    var flag=0;
     const regions =value.filter((val) => {
       if ( this.state.regionValue == "none" ) {
-        flag+=1;
+        flag=1;
+
         return val;
       }
         else if( 
@@ -62,10 +66,15 @@ class Home  extends React.Component {
           .toLowerCase()
           .includes(this.state.regionValue.toLowerCase())
           ){
-            flag+=1;
+            flag=1;
+
             return val;
           }
-      }).map((num)=>num)
+          console.log(flag,'hii')
+      // if(flag==0){
+      //   return 'No Search Found';
+      // }    
+      })
 return regions;
 
   }

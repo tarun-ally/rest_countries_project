@@ -38,7 +38,7 @@ class Search extends React.Component {
 
   <Dropdown.Menu   onClick={this.props.countryByRegion}>
   {this.props.filteredRegion.map((element, key) => {
-    console.log(element,'nappa');
+    // console.log(element,'nappa');
     return <Dropdown.Item >{element}</Dropdown.Item>
     // <option>{element}</option>
   })}
